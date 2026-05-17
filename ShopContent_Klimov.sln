@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36511.14 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopContent_Klimov", "ShopContent_Klimov\ShopContent_Klimov.csproj", "{95DF10C6-6359-4C94-9A50-46FC1D168CDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95DF10C6-6359-4C94-9A50-46FC1D168CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95DF10C6-6359-4C94-9A50-46FC1D168CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95DF10C6-6359-4C94-9A50-46FC1D168CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95DF10C6-6359-4C94-9A50-46FC1D168CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E2F5E0A-B370-4F3F-89A0-B362CB6A6EDE}
+	EndGlobalSection
+EndGlobal
