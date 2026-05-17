@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ShopContent_Klimov.View
+namespace ShopContent_Klimov.View.Items
 {
     /// <summary>
-    /// Логика взаимодействия для Main.xaml
+    /// Логика взаимодействия для Item.xaml
     /// </summary>
-    public partial class Main : Page
+    public partial class Item : UserControl
     {
-        public Main()
+        public Item()
         {
             InitializeComponent();
-            DataContext = new VMItems();
         }
     }
 }

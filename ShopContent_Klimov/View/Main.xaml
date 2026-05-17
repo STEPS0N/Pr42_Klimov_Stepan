@@ -6,9 +6,30 @@
       xmlns:local="clr-namespace:ShopContent_Klimov.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Main">
+      Title="Main"
+      FontFamily="Century Gothic">
+
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF4FC318"/>
+            <Setter Property="BorderBrush" Value="#FF4FC318"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
-        
+        <ListView ItemsSource="{Binding Items}" HorizontalContentAlignment="Stretch" Margin="0,0,0,40">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!--<element:Item DataContext="{Binding}"/>-->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Content="Добавить" Width="100" Height="25" Margin="0,0,10,10" VerticalAlignment="Bottom"
+                HorizontalAlignment="Right" Command="{Binding NewItem}">
+            <Button.Effect>
+                <DropShadowEffect Direction="270" BlurRadius="5" ShadowDepth="2" Opacity="0.5"/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Page>
