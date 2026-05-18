@@ -10,10 +10,10 @@ namespace ShopContent_Klimov.Classes
     public class Connection
     {
         private static readonly string config = "server=localhost;" +
-            "Trusted_Connection=No;" +
-            "DataBase=ShopContent;" +
-            "User=root;" +
-            "PWD=;";
+            "port=3307;" +
+            "database=ShopContent;" +
+            "uid=root;" +
+            "pwd=;";
 
         public static SqlConnection OpenConnection()
         {
