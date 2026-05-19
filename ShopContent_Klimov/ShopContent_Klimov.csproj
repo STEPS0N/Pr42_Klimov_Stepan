@@ -9,16 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\ic_category.png" />
     <None Remove="Images\ic_item.png" />
+    <None Remove="Images\ic_item_category.png" />
     <None Remove="Images\ic_shop.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.9.1" />
+    <PackageReference Include="MySql.Data" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\ic_category.png" />
     <Resource Include="Images\ic_item.png" />
+    <Resource Include="Images\ic_item_category.png" />
     <Resource Include="Images\ic_shop.png" />
   </ItemGroup>
 

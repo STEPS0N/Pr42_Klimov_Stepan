@@ -1,5 +1,7 @@
-﻿using ShopContent_Klimov.Classes;
+﻿using MySql.Data.MySqlClient;
+using ShopContent_Klimov.Classes;
 using ShopContent_Klimov.Model;
+using ShopContent_Klimov.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +17,6 @@ namespace ShopContent_Klimov.Context
     {
         public ItemsContext(bool save = false)
         {
-            if (save) Save(true);
             Category = new Categorys();
         }
 
@@ -23,8 +24,8 @@ namespace ShopContent_Klimov.Context
         {
             ObservableCollection<ItemsContext> allItems = new ObservableCollection<ItemsContext>();
             ObservableCollection<CategorysContext> allCategorys = CategorysContext.AllCategorys();
-            SqlConnection connection;
-            SqlDataReader dataItems = Connection.Query("SELECT * FROM `Items`", out connection);
+            MySqlConnection connection;
+            MySqlDataReader dataItems = Connection.Query("SELECT * FROM `ShopContent`.`Items`", out connection);
 
             while (dataItems.Read())
             {
@@ -45,29 +46,32 @@ namespace ShopContent_Klimov.Context
 
         public void Save(bool New = false)
         {
-            SqlConnection connection;
+            MySqlConnection connection;
 
             if (New)
             {
-                SqlDataReader dataItems = Connection.Query("INSERT INTO " +
-                    "`Items`(" +
+                MySqlDataReader dataItems = Connection.Query("INSERT INTO " +
+                    "`ShopContent`.`Items` (" +
                         "Name, " +
                         "Price, " +
-                        "Description) " +
+                        "Description, " +
+                        "IdCategory) " +
                     "VALUES (" +
                         $"'{this.Name}', " +
                         $"{this.Price}, " +
-                        $"'{this.Description}');", out connection);
+                        $"'{this.Description}', " +
+                        $"{this.Category.Id}); " +
+                    "SELECT LAST_INSERT_ID();", out connection);
+                
                 dataItems.Read();
-
                 this.Id = dataItems.GetInt32(0);
             }
             else
             {
-                Connection.Query("UPDATE `Items` " +
+                Connection.Query("UPDATE `ShopContent`.`Items` " +
                     "SET " +
                         $"Name = '{this.Name}', " +
-                        $"Price = {this.Name}, " +
+                        $"Price = {this.Price}, " +
                         $"Description = '{this.Description}', " +
                         $"IdCategory = {this.Category.Id} " +
                     "WHERE " +
@@ -79,8 +83,8 @@ namespace ShopContent_Klimov.Context
 
         public void Delete()
         {
-            SqlConnection connection;
-            Connection.Query("DELETE FROM `Items` " +
+            MySqlConnection connection;
+            Connection.Query("DELETE FROM `ShopContent`.`Items` " +
                 "WHERE " +
                 $"Id = {this.Id}", out connection);
             Connection.CloseConnection(connection);
@@ -93,6 +97,7 @@ namespace ShopContent_Klimov.Context
                 return new RelayCommand(obj =>
                 {
                     MainWindow.init.frame.Navigate(new View.Add(this));
+                    MainWindow.init.Main.DataContext = new VMItems();
                 });
             }
         }
@@ -103,8 +108,9 @@ namespace ShopContent_Klimov.Context
             {
                 return new RelayCommand(obj =>
                 {
-                    
+                    Category = CategorysContext.AllCategorys().Where(x => x.Id == this.Category.Id).First();
                     Save();
+                    MainWindow.init.Main.DataContext = new VMItems();
                 });
             }
         }

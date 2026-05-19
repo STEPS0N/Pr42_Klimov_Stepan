@@ -1,4 +1,5 @@
-﻿using ShopContent_Klimov.Context;
+﻿using ShopContent_Klimov.Classes;
+using ShopContent_Klimov.Context;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +14,19 @@ namespace ShopContent_Klimov.ViewModel
     public class VMCategorys : INotifyPropertyChanged
     {
         public ObservableCollection<CategorysContext> Categorys { get; set; }
+
+        public RelayCommand NewCategory
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    CategorysContext newModel = new CategorysContext();
+                    Categorys.Add(newModel);
+                    MainWindow.init.frame.Navigate(new View.CategoryAdd(newModel));
+                });
+            }
+        }
 
         public VMCategorys()
         {

@@ -1,5 +1,4 @@
-﻿using ShopContent_Klimov.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ShopContent_Klimov.View
+namespace ShopContent_Klimov.View.Items
 {
     /// <summary>
-    /// Логика взаимодействия для Main.xaml
+    /// Логика взаимодействия для ItemCategory.xaml
     /// </summary>
-    public partial class Main : Page
+    public partial class ItemCategory : UserControl
     {
-        public Main()
+        public ItemCategory()
         {
             InitializeComponent();
-            DataContext = new VMItems();
         }
     }
 }

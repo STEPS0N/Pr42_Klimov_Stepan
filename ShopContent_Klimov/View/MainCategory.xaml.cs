@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 namespace ShopContent_Klimov.View
 {
     /// <summary>
-    /// Логика взаимодействия для Main.xaml
+    /// Логика взаимодействия для MainCategory.xaml
     /// </summary>
-    public partial class Main : Page
+    public partial class MainCategory : Page
     {
-        public Main()
+        public MainCategory()
         {
             InitializeComponent();
-            DataContext = new VMItems();
+            DataContext = new VMCategorys();
         }
     }
 }

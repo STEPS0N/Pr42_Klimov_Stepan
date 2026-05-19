@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,23 +16,23 @@ namespace ShopContent_Klimov.Classes
             "uid=root;" +
             "pwd=;";
 
-        public static SqlConnection OpenConnection()
+        public static MySqlConnection OpenConnection()
         {
-            SqlConnection connection = new SqlConnection(config);
+            MySqlConnection connection = new MySqlConnection(config);
             connection.Open();
             return connection;
         }
 
-        public static SqlDataReader Query(string SQL, out SqlConnection connection)
+        public static MySqlDataReader Query(string SQL, out MySqlConnection connection)
         {
             connection = OpenConnection();
-            return new SqlCommand(SQL, connection).ExecuteReader();
+            return new MySqlCommand(SQL, connection).ExecuteReader();
         }
 
-        public static void CloseConnection(SqlConnection connection)
+        public static void CloseConnection(MySqlConnection connection)
         {
             connection.Close();
-            SqlConnection.ClearPool(connection);
+            MySqlConnection.ClearPool(connection);
         }
     }
 }

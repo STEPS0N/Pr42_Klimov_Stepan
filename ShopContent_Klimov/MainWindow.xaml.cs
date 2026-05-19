@@ -18,16 +18,22 @@ namespace ShopContent_Klimov
     {
         public static MainWindow init;
         public View.Main Main = new View.Main();
+        public View.MainCategory Category = new View.MainCategory();
         public MainWindow()
         {
             InitializeComponent();
             init = this;
-            frame.Navigate(this);
+            frame.Navigate(Main);
         }
 
         private void OpenIndex(object sender, MouseButtonEventArgs e)
         {
             frame.Navigate(Main);
+        }
+
+        private void OpenCategory(object sender, MouseButtonEventArgs e)
+        {
+            frame.Navigate(Category);
         }
     }
 }
